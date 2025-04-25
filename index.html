@@ -2,6 +2,27 @@
 <html class="no-js" lang="ro">
 
 <head>
+  <!-- CONSENT MODE V2 DEFAULT -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    // Setăm consimțământul implicit
+    if (typeof gtag === 'function') {
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'functionality_storage': 'granted',
+        'security_storage': 'granted',
+        'wait_for_update': 500
+      });
+    }
+  </script>
+
 
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
@@ -48,6 +69,17 @@
 </head>
 
 <body>
+  <!-- COOKIE CONSENT BANNER -->
+  <div id="cookie-banner"
+    style="position: fixed; bottom: 0; left: 0; right: 0; background: white; color: black; padding: 15px 20px; text-align: center; box-shadow: 0 -2px 10px rgba(0,0,0,0.3); z-index: 9999; display: none; font-size: 16px;">
+    <p style="margin: 0 0 10px 0;">Folosim cookie-uri pentru optimizarea serviciilor.</p>
+    <button onclick="acceptCookies()"
+      style="margin: 5px; padding: 10px 20px; border: none; background-color: darkorange; color: white; font-size: 16px; border-radius: 5px;">Acceptă</button>
+    <button onclick="rejectCookies()"
+      style="margin: 5px; padding: 10px 20px; border: none; background-color: #ccc; color: black; font-size: 16px; border-radius: 5px;">Refuză</button>
+  </div>
+
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGJP7TH5" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
@@ -649,6 +681,70 @@
   <script src="assets/js/glightbox.min.js"></script>
   <script src="assets/js/polyfill.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <script>
+    function setConsentCookie(value) {
+      var d = new Date();
+      d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000)); // 1 an
+      var expires = "expires=" + d.toUTCString();
+      document.cookie = "consent_choice=" + value + ";" + expires + ";path=/";
+    }
+
+    function getConsentCookie() {
+      var name = "consent_choice=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i].trim();
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    function acceptCookies() {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'granted',
+          'analytics_storage': 'granted',
+          'ad_user_data': 'granted',
+          'ad_personalization': 'granted'
+        });
+      }
+      setConsentCookie('accepted');
+      var banner = document.getElementById('cookie-banner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    function rejectCookies() {
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'ad_storage': 'denied',
+          'analytics_storage': 'denied',
+          'ad_user_data': 'denied',
+          'ad_personalization': 'denied'
+        });
+      }
+      setConsentCookie('rejected');
+      var banner = document.getElementById('cookie-banner');
+      if (banner) banner.style.display = 'none';
+    }
+
+    window.addEventListener('load', function () {
+      var consent = getConsentCookie();
+      if (!consent) {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) banner.style.display = 'block';
+      } else if (consent === 'accepted') {
+        acceptCookies();
+      } else if (consent === 'rejected') {
+        rejectCookies();
+      }
+    });
+  </script>
+
+
   <script type="text/javascript">
     (function () {
       var options = {
