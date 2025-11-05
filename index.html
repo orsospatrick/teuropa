@@ -169,7 +169,7 @@
               Transport international de persoane,pachete de la adresa la adresa. Rezerva locul tau telefonic si
               beneficiezi de o reducere.
             </p>
-            <a href="tel:+40723133087" class="main-btn btn-hover">SUNĂ +40723133087</a>
+            <a href="tel:+40762993489" class="main-btn btn-hover">SUNĂ +40762993489</a>
           </div>
         </div>
         <div class="col-lg-6">
@@ -207,7 +207,7 @@
 
                 </div>
 
-                <a style="margin-top:10px;margin-right: 30px;" href="tel:+40723133087"
+                <a style="margin-top:10px;margin-right: 30px;" href="tel:+40762993489"
                   class="main-btn btn-hover">REZERVARE</a>
               </div>
 
@@ -227,7 +227,7 @@
                     Oferim transport persoane Romania Belgia si Belgia Romania de la adresa la adresa
                   </p>
                 </div>
-                <a style="margin-top:10px;margin-right: 30px;" href="tel:+40723133087"
+                <a style="margin-top:10px;margin-right: 30px;" href="tel:+40762993489"
                   class="main-btn btn-hover">REZERVARE</a>
               </div>
             </div>
@@ -247,7 +247,7 @@
                   Plecari cu microbuzul Olanda Romania si invers de la adresa la adresa.
                 </p>
               </div>
-              <a style="margin-top:10px;margin-right: 30px;" href="tel:+40723133087"
+              <a style="margin-top:10px;margin-right: 30px;" href="tel:+40762993489"
                 class="main-btn btn-hover">REZERVARE</a>
             </div>
           </div>
@@ -284,7 +284,7 @@
               <li>Direct la adresa dorita</li>
 
             </ul>
-            <a href="tel:+40723133087" class="main-btn btn-hover">REZERVĂ ACUM!</a>
+            <a href="tel:+40762993489" class="main-btn btn-hover">REZERVĂ ACUM!</a>
           </div>
         </div>
 
@@ -313,7 +313,7 @@
 
               </ul>
             </div>
-            <a href="tel:+40723133087" class="main-btn btn-hover">CONTACT +40723133087</a>
+            <a href="tel:+40762993489" class="main-btn btn-hover">CONTACT +40762993489</a>
           </div>
         </div>
       </div>
@@ -346,7 +346,7 @@
               <li>Romania Olanda </li>
 
             </ul>
-            <a href="tel:+40723133087" class="main-btn btn-hover">REZERVĂ ACUM!</a>
+            <a href="tel:+40762993489" class="main-btn btn-hover">REZERVĂ ACUM!</a>
           </div>
         </div>
 
@@ -590,7 +590,7 @@
                 <i class="lni lni-phone"></i>
               </div>
               <div class="content">
-                <p>+40723133087</p>
+                <p>+40762993489</p>
 
 
               </div>
@@ -751,34 +751,85 @@
   </script>
 
 
-  <script type="text/javascript">
-    (function () {
-      var options = {
-        call: "+40723133087", // Call phone numb
-        call_to_action: "Telefon", // Call to action
-        position: "right", // Position may be 'right' or 'left'
-      };
-      var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
-  </script>
-  <!-- /GetButton.io widget -->
-  <!-- GetButton.io widget -->
-  <script type="text/javascript">
-    (function () {
-      var options = {
-        whatsapp: "+40723133087", // WhatsApp nu
-        call_to_action: "WhatsApp!", // Call to action
-        position: "left", // Position may be 'right' or 'left'
-      };
-      var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
-      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
-      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
-      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-    })();
-  </script>
+  <style>
+    :root {
+      --fab-bottom: 50px;
+      /* ridică/ coboară butoanele aici */
+    }
+
+    .fab-btn {
+      position: fixed;
+      bottom: calc(var(--fab-bottom) + env(safe-area-inset-bottom, 0px));
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, .28);
+      z-index: 99999;
+      transition: transform .15s ease, box-shadow .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fab-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .34);
+    }
+
+    .fab-btn:active {
+      transform: translateY(0);
+    }
+
+    .fab-wa {
+      left: 16px;
+      background: #25D366;
+    }
+
+    /* WhatsApp - stânga */
+    .fab-call {
+      right: 16px;
+      background: red;
+    }
+
+    /* Apel - dreapta (albastru Leone) */
+
+    .fab-btn svg {
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+    }
+
+    /* Zonă de click mai mare (invizibilă) pentru tap ușor pe mobil */
+    .fab-btn::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+    }
+  </style>
+
+  <!-- WhatsApp (stânga) -->
+  <a class="fab-btn fab-wa" href="https://wa.me/+40762993489?text=Salut!%20Aș%20dori%20informații%20despre%20transport."
+    target="_blank" rel="noopener" aria-label="Deschide WhatsApp">
+    <!-- WhatsApp SVG icon -->
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path
+        d="M16.04 3C8.89 3 3.06 8.83 3.06 15.98c0 2.29.59 4.52 1.72 6.49l-1.83 6.68 6.85-1.79c1.89 1.03 4.04 1.58 6.25 1.58 7.15 0 12.98-5.83 12.98-12.98 0-3.47-1.35-6.74-3.8-9.19S19.51 3 16.04 3zm0 24.06c-1.91 0-3.77-.49-5.42-1.42l-.39-.22-4.06 1.06 1.08-3.95-.26-.4c-1.05-1.64-1.6-3.54-1.6-5.49 0-5.65 4.6-10.25 10.26-10.25 2.73 0 5.29 1.06 7.22 2.99s2.99 4.5 2.99 7.22c0 5.66-4.6 10.26-10.26 10.26zm5.7-7.69c-.31-.16-1.85-.91-2.14-1.02-.29-.11-.5-.16-.71.16-.21.31-.81 1.02-.99 1.23-.18.21-.36.23-.67.08-.31-.16-1.33-.49-2.53-1.55-.93-.82-1.56-1.82-1.75-2.12-.18-.31-.02-.48.14-.63.14-.14.31-.36.45-.54.14-.18.18-.32.27-.53.09-.21.05-.39-.03-.55-.08-.16-.71-1.7-.97-2.34-.26-.6-.52-.52-.71-.53h-.61c-.21 0-.55.08-.83.39-.29.31-1.1 1.07-1.1 2.61 0 1.54 1.13 3.02 1.29 3.23.16.21 2.23 3.4 5.43 4.75.76.33 1.35.53 1.81.67.76.24 1.45.21 2 .13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.35.18-1.49-.08-.13-.28-.21-.59-.36z" />
+    </svg>
+  </a>
+
+  <!-- Apel (dreapta) -->
+  <a class="fab-btn fab-call" href="tel:+40762993489" aria-label="Apelează acum">
+    <!-- Phone SVG icon -->
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1v3.49a1 1 0 01-1 1C10.07 21 3 13.93 3 5.5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.21 2.2z" />
+    </svg>
+  </a>
+
 </body>
 
 </html>
